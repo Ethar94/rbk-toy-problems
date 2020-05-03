@@ -34,8 +34,34 @@ not a global variable or only the specific example above.
 I.e. If someone called your function with 10 objects 
 (with all safely have the same properties), it should work just as well.
 */
+function each (coll,f){
+	if (Array.isArray(coll)){
+		for(var i =; i<coll.length;i++){
+			f(coll[i],i);
+		}
+	}else{
+		for(var key in coll){
+			f(coll[key],key);
+		}
+	}
+}
+function filter(array,predicate){
+	var acc=[];
+	each(array,function(element){
+		if(predicate(element)){
+			acc.push(element);
+		}
+	});
+	return acc;
 
-// your answer is here
+}
+ function tallEnoughToRide(people){
+ 	return filter (people,function(person)){
+ 		return person.name
+ 	}
+ } 
+
+
 
 /*
 2-Working off of the same data structure as tallEnoughToRide, 
@@ -50,4 +76,10 @@ tallestPerson(groupA); //"Kiana at 55 inches"
 
 */
 
-// your answer is here
+
+function tallEnoughToRide (people){
+return map(people,function(name){
+	return people.name
+})
+
+}
